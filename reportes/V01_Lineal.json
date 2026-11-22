@@ -1,0 +1,83 @@
+{
+  "workflow": "V01_Lineal",
+  "status": "VALID",
+  "staticallyValid": true,
+  "summary": {
+    "states": 3,
+    "transitions": 2,
+    "activities": 1,
+    "roles": 1,
+    "actors": 1,
+    "variables": 0,
+    "reachableStates": 3,
+    "usefulStates": 3,
+    "finalStates": 1,
+    "deadTransitions": 0
+  },
+  "findings": [],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Aprobado", "Inicio", "Revision"],
+    "coReach": ["Aprobado", "Inicio", "Revision"],
+    "trapped": [],
+    "deadlocks": [],
+    "livelocks": [],
+    "finalReachable": true,
+    "sound": true
+  },
+  "inferred": {
+    "usefulStates": ["Aprobado", "Inicio", "Revision"],
+    "pathsToFinals": {
+      "Aprobado": ["T1", "T2"]
+    },
+    "actorsByActivity": {
+      "Revisar": ["Ana"]
+    }
+  },
+  "checks": [
+    {
+      "check": "sound",
+      "result": "PASS",
+      "inferred": "sound"
+    },
+    {
+      "check": "alcanzable Aprobado",
+      "result": "PASS",
+      "inferred": "alcanzable desde Inicio"
+    },
+    {
+      "check": "ruta hacia Aprobado = T1,T2",
+      "result": "PASS",
+      "inferred": "ruta más corta T1,T2"
+    },
+    {
+      "check": "actores de Revisar = Ana",
+      "result": "PASS",
+      "inferred": "actores inferidos {Ana}"
+    },
+    {
+      "check": "simulacion termina en Aprobado",
+      "result": "PASS",
+      "inferred": "la simulación termina en Aprobado (FINAL_REACHED)"
+    }
+  ],
+  "simulation": {
+    "initialValuation": {},
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Revision"
+      },
+      {
+        "step": 2,
+        "from": "Revision",
+        "transition": "T2",
+        "to": "Aprobado"
+      }
+    ],
+    "lastState": "Aprobado",
+    "outcome": "FINAL_REACHED"
+  }
+}

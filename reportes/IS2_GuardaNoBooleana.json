@@ -1,0 +1,22 @@
+{
+  "workflow": "IS2_GuardaNoBooleana",
+  "status": "INVALID",
+  "staticallyValid": false,
+  "summary": {
+    "states": 2,
+    "transitions": 1,
+    "activities": 0,
+    "roles": 0,
+    "actors": 0,
+    "variables": 1
+  },
+  "findings": [
+    {
+      "code": "T-GUARD",
+      "severity": "ERROR",
+      "phase": "static",
+      "element": "T1",
+      "message": "la guarda de T1 debe ser Boolean, pero es Integer"
+    }
+  ]
+}

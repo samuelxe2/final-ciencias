@@ -1,0 +1,29 @@
+{
+  "workflow": "IS3_RolIncompatible",
+  "status": "INVALID",
+  "staticallyValid": false,
+  "summary": {
+    "states": 3,
+    "transitions": 2,
+    "activities": 1,
+    "roles": 1,
+    "actors": 1,
+    "variables": 0
+  },
+  "findings": [
+    {
+      "code": "T-ROLE",
+      "severity": "ERROR",
+      "phase": "static",
+      "element": "Calcular",
+      "message": "la actividad automática Calcular requiere un rol de sistema, pero Revisor es un rol humano"
+    },
+    {
+      "code": "WF-MULTIPLE-INITIAL",
+      "severity": "ERROR",
+      "phase": "static",
+      "element": "Inicio2",
+      "message": "solo puede haber un estado inicial; Inicio ya lo es (I1)"
+    }
+  ]
+}

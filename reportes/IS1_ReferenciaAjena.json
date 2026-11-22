@@ -1,0 +1,22 @@
+{
+  "workflow": "IS1_ReferenciaAjena",
+  "status": "INVALID",
+  "staticallyValid": false,
+  "summary": {
+    "states": 2,
+    "transitions": 2,
+    "activities": 0,
+    "roles": 0,
+    "actors": 0,
+    "variables": 0
+  },
+  "findings": [
+    {
+      "code": "WF-OUT-OF-SCOPE",
+      "severity": "ERROR",
+      "phase": "static",
+      "element": "T2",
+      "message": "T2 referencia a 'Externo', que no está declarado en el workflow IS1_ReferenciaAjena (fuera de alcance)"
+    }
+  ]
+}

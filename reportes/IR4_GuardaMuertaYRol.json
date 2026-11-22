@@ -1,0 +1,75 @@
+{
+  "workflow": "IR4_GuardaMuertaYRol",
+  "status": "WARNING",
+  "staticallyValid": true,
+  "summary": {
+    "states": 3,
+    "transitions": 2,
+    "activities": 1,
+    "roles": 1,
+    "actors": 0,
+    "variables": 1,
+    "reachableStates": 2,
+    "usefulStates": 2,
+    "finalStates": 2,
+    "deadTransitions": 1
+  },
+  "findings": [
+    {
+      "code": "WF-DEAD-GUARD",
+      "severity": "WARNING",
+      "phase": "reasoner",
+      "element": "T2",
+      "message": "la guarda de T2 es insatisfacible (((x < 1) and (x == 5))); la transición nunca se habilita"
+    },
+    {
+      "code": "WF-UNASSIGNED-ROLE",
+      "severity": "WARNING",
+      "phase": "reasoner",
+      "element": "Auditar",
+      "message": "ningún actor tiene el rol Auditor, necesario para la actividad Auditar"
+    },
+    {
+      "code": "WF-UNREACHABLE",
+      "severity": "WARNING",
+      "phase": "reasoner",
+      "element": "Excepcion",
+      "message": "el estado Excepcion no es alcanzable desde Inicio"
+    }
+  ],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Fin", "Inicio"],
+    "coReach": ["Excepcion", "Fin", "Inicio"],
+    "trapped": [],
+    "deadlocks": [],
+    "livelocks": [],
+    "finalReachable": true,
+    "sound": true
+  },
+  "inferred": {
+    "usefulStates": ["Fin", "Inicio"],
+    "pathsToFinals": {
+      "Fin": ["T1"]
+    },
+    "actorsByActivity": {
+      "Auditar": []
+    }
+  },
+  "checks": [],
+  "simulation": {
+    "initialValuation": {
+      "x": 0
+    },
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Fin"
+      }
+    ],
+    "lastState": "Fin",
+    "outcome": "FINAL_REACHED"
+  }
+}

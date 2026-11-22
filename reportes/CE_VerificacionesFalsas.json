@@ -1,0 +1,135 @@
+{
+  "workflow": "CE_VerificacionesFalsas",
+  "status": "INVALID",
+  "staticallyValid": true,
+  "summary": {
+    "states": 5,
+    "transitions": 4,
+    "activities": 1,
+    "roles": 1,
+    "actors": 2,
+    "variables": 0,
+    "reachableStates": 4,
+    "usefulStates": 3,
+    "finalStates": 1,
+    "deadTransitions": 0
+  },
+  "findings": [
+    {
+      "code": "WF-CHECK-FAILED",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "actores de Revisar = Ana,Luis",
+      "message": "la verificación 'actores de Revisar = Ana,Luis' no se cumple: actores inferidos {Ana}"
+    },
+    {
+      "code": "WF-CHECK-FAILED",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "alcanzable Olvidado",
+      "message": "la verificación 'alcanzable Olvidado' no se cumple: no alcanzable desde Inicio"
+    },
+    {
+      "code": "WF-CHECK-FAILED",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "ruta hacia Fin = T1,T3",
+      "message": "la verificación 'ruta hacia Fin = T1,T3' no se cumple: ruta más corta T1,T2"
+    },
+    {
+      "code": "WF-CHECK-FAILED",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "simulacion termina en Bucle",
+      "message": "la verificación 'simulacion termina en Bucle' no se cumple: la simulación termina en Fin (FINAL_REACHED)"
+    },
+    {
+      "code": "WF-CHECK-FAILED",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "sound",
+      "message": "la verificación 'sound' no se cumple: no sound (estados sin terminación: {Bucle})"
+    },
+    {
+      "code": "WF-LIVELOCK",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "Bucle",
+      "message": "livelock: Bucle pertenece al ciclo {Bucle} del que no se puede llegar a un estado final"
+    },
+    {
+      "code": "WF-UNREACHABLE",
+      "severity": "WARNING",
+      "phase": "reasoner",
+      "element": "Olvidado",
+      "message": "el estado Olvidado no es alcanzable desde Inicio"
+    }
+  ],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Bucle", "Fin", "Inicio", "Revision"],
+    "coReach": ["Fin", "Inicio", "Revision"],
+    "trapped": ["Bucle"],
+    "deadlocks": [],
+    "livelocks": [
+      ["Bucle"]
+    ],
+    "finalReachable": true,
+    "sound": false
+  },
+  "inferred": {
+    "usefulStates": ["Fin", "Inicio", "Revision"],
+    "pathsToFinals": {
+      "Fin": ["T1", "T2"]
+    },
+    "actorsByActivity": {
+      "Revisar": ["Ana"]
+    }
+  },
+  "checks": [
+    {
+      "check": "alcanzable Olvidado",
+      "result": "FAIL",
+      "inferred": "no alcanzable desde Inicio"
+    },
+    {
+      "check": "sound",
+      "result": "FAIL",
+      "inferred": "no sound (estados sin terminación: {Bucle})"
+    },
+    {
+      "check": "ruta hacia Fin = T1,T3",
+      "result": "FAIL",
+      "inferred": "ruta más corta T1,T2"
+    },
+    {
+      "check": "actores de Revisar = Ana,Luis",
+      "result": "FAIL",
+      "inferred": "actores inferidos {Ana}"
+    },
+    {
+      "check": "simulacion termina en Bucle",
+      "result": "FAIL",
+      "inferred": "la simulación termina en Fin (FINAL_REACHED)"
+    }
+  ],
+  "simulation": {
+    "initialValuation": {},
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Revision"
+      },
+      {
+        "step": 2,
+        "from": "Revision",
+        "transition": "T2",
+        "to": "Fin"
+      }
+    ],
+    "lastState": "Fin",
+    "outcome": "FINAL_REACHED"
+  }
+}

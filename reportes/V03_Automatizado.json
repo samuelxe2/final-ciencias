@@ -1,0 +1,76 @@
+{
+  "workflow": "V03_Automatizado",
+  "status": "VALID",
+  "staticallyValid": true,
+  "summary": {
+    "states": 3,
+    "transitions": 3,
+    "activities": 2,
+    "roles": 2,
+    "actors": 2,
+    "variables": 1,
+    "reachableStates": 3,
+    "usefulStates": 3,
+    "finalStates": 1,
+    "deadTransitions": 0
+  },
+  "findings": [],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Fin", "Inicio", "Revision"],
+    "coReach": ["Fin", "Inicio", "Revision"],
+    "trapped": [],
+    "deadlocks": [],
+    "livelocks": [],
+    "finalReachable": true,
+    "sound": true
+  },
+  "inferred": {
+    "usefulStates": ["Fin", "Inicio", "Revision"],
+    "pathsToFinals": {
+      "Fin": ["T1", "T3"]
+    },
+    "actorsByActivity": {
+      "CalcularRiesgo": ["Bot"],
+      "Revisar": ["Ana"]
+    }
+  },
+  "checks": [
+    {
+      "check": "sound",
+      "result": "PASS",
+      "inferred": "sound"
+    },
+    {
+      "check": "actores de CalcularRiesgo = Bot",
+      "result": "PASS",
+      "inferred": "actores inferidos {Bot}"
+    },
+    {
+      "check": "simulacion termina en Fin",
+      "result": "PASS",
+      "inferred": "la simulación termina en Fin (FINAL_REACHED)"
+    }
+  ],
+  "simulation": {
+    "initialValuation": {
+      "aprobado": true
+    },
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Revision"
+      },
+      {
+        "step": 2,
+        "from": "Revision",
+        "transition": "T3",
+        "to": "Fin"
+      }
+    ],
+    "lastState": "Fin",
+    "outcome": "FINAL_REACHED"
+  }
+}

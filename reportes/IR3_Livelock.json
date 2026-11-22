@@ -1,0 +1,66 @@
+{
+  "workflow": "IR3_Livelock",
+  "status": "INVALID",
+  "staticallyValid": true,
+  "summary": {
+    "states": 4,
+    "transitions": 4,
+    "activities": 0,
+    "roles": 0,
+    "actors": 0,
+    "variables": 0,
+    "reachableStates": 4,
+    "usefulStates": 2,
+    "finalStates": 1,
+    "deadTransitions": 0
+  },
+  "findings": [
+    {
+      "code": "WF-LIVELOCK",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "Correccion",
+      "message": "livelock: Correccion pertenece al ciclo {Revision, Correccion} del que no se puede llegar a un estado final"
+    },
+    {
+      "code": "WF-LIVELOCK",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "Revision",
+      "message": "livelock: Revision pertenece al ciclo {Revision, Correccion} del que no se puede llegar a un estado final"
+    }
+  ],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Correccion", "Fin", "Inicio", "Revision"],
+    "coReach": ["Fin", "Inicio"],
+    "trapped": ["Correccion", "Revision"],
+    "deadlocks": [],
+    "livelocks": [
+      ["Correccion", "Revision"]
+    ],
+    "finalReachable": true,
+    "sound": false
+  },
+  "inferred": {
+    "usefulStates": ["Fin", "Inicio"],
+    "pathsToFinals": {
+      "Fin": ["T1"]
+    },
+    "actorsByActivity": {}
+  },
+  "checks": [],
+  "simulation": {
+    "initialValuation": {},
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Fin"
+      }
+    ],
+    "lastState": "Fin",
+    "outcome": "FINAL_REACHED"
+  }
+}

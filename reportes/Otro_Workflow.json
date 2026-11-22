@@ -1,0 +1,49 @@
+{
+  "workflow": "Otro_Workflow",
+  "status": "VALID",
+  "staticallyValid": true,
+  "summary": {
+    "states": 2,
+    "transitions": 1,
+    "activities": 0,
+    "roles": 0,
+    "actors": 0,
+    "variables": 0,
+    "reachableStates": 2,
+    "usefulStates": 2,
+    "finalStates": 1,
+    "deadTransitions": 0
+  },
+  "findings": [],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Externo", "Inicio"],
+    "coReach": ["Externo", "Inicio"],
+    "trapped": [],
+    "deadlocks": [],
+    "livelocks": [],
+    "finalReachable": true,
+    "sound": true
+  },
+  "inferred": {
+    "usefulStates": ["Externo", "Inicio"],
+    "pathsToFinals": {
+      "Externo": ["T1"]
+    },
+    "actorsByActivity": {}
+  },
+  "checks": [],
+  "simulation": {
+    "initialValuation": {},
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Externo"
+      }
+    ],
+    "lastState": "Externo",
+    "outcome": "FINAL_REACHED"
+  }
+}

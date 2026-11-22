@@ -1,0 +1,20 @@
+# JetBrains MPS: código y clases generadas
+source_gen/
+source_gen.caches/
+classes_gen/
+test_gen/
+test_gen.caches/
+.mps/workspace.xml
+.mps/shelf/
+*.iml
+.idea/
+
+# builds locales (generación headless, compilación del razonador)
+build/
+reasoner/build/
+
+# otros
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

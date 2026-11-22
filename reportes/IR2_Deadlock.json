@@ -1,0 +1,63 @@
+{
+  "workflow": "IR2_Deadlock",
+  "status": "INVALID",
+  "staticallyValid": true,
+  "summary": {
+    "states": 4,
+    "transitions": 3,
+    "activities": 0,
+    "roles": 0,
+    "actors": 0,
+    "variables": 0,
+    "reachableStates": 4,
+    "usefulStates": 3,
+    "finalStates": 1,
+    "deadTransitions": 0
+  },
+  "findings": [
+    {
+      "code": "WF-DEADLOCK",
+      "severity": "ERROR",
+      "phase": "reasoner",
+      "element": "Espera",
+      "message": "bloqueo: Espera es alcanzable, no es final y no tiene transiciones de salida"
+    }
+  ],
+  "properties": {
+    "initialState": "Inicio",
+    "reach": ["Espera", "Fin", "Inicio", "Revision"],
+    "coReach": ["Fin", "Inicio", "Revision"],
+    "trapped": ["Espera"],
+    "deadlocks": ["Espera"],
+    "livelocks": [],
+    "finalReachable": true,
+    "sound": false
+  },
+  "inferred": {
+    "usefulStates": ["Fin", "Inicio", "Revision"],
+    "pathsToFinals": {
+      "Fin": ["T1", "T2"]
+    },
+    "actorsByActivity": {}
+  },
+  "checks": [],
+  "simulation": {
+    "initialValuation": {},
+    "steps": [
+      {
+        "step": 1,
+        "from": "Inicio",
+        "transition": "T1",
+        "to": "Revision"
+      },
+      {
+        "step": 2,
+        "from": "Revision",
+        "transition": "T2",
+        "to": "Fin"
+      }
+    ],
+    "lastState": "Fin",
+    "outcome": "FINAL_REACHED"
+  }
+}
